@@ -16,6 +16,8 @@ public class Player {
     public static MediaPlayer player = null;
     public static int playerStatus = STOP;
 
+
+
     public static void play(Uri musicUri, Context context) {
 
         if (player != null) {
@@ -26,6 +28,13 @@ public class Player {
         player.start();
         playerStatus = PLAY;
 
+    }
+
+    public static void stop(){
+        if(player!=null){
+            player.stop();
+        }
+        playerStatus = STOP;
     }
 
     public static void pause() {

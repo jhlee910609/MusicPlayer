@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity implements ListFragment.OnListFragmentInteractionListener, PermissonControl.CallBack {
@@ -51,8 +52,9 @@ public class MainActivity extends AppCompatActivity implements ListFragment.OnLi
         transaction.commit();
     }
 
-    // TODO
     @Override
     public void goDetailInteration(int position) {
+        Log.d("MainActivity", "=================== goDetailInteraction();");
+        addFragment(DetailFragment.newInstance(position));
     }
 }

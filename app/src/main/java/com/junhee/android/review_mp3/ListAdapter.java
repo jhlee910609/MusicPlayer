@@ -3,6 +3,7 @@ package com.junhee.android.review_mp3;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     private Context context = null;
     private final List<Music.Item> datas;
+    // mListener = activity 그 자체
     private final OnListFragmentInteractionListener mListener;
 
     public ListAdapter(List<Music.Item> items, OnListFragmentInteractionListener listener) {
@@ -50,7 +52,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         holder.position = position;
         holder.musicUri = datas.get(position).musicUri;
-        holder.mIdView.setText(datas.get(position).id);
+        holder.mIdView.setText(datas.get(position).artist);
         holder.mContentView.setText(datas.get(position).title);
 
         Glide
@@ -73,6 +75,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     public void goDetail(int position){
+        Log.d("ListAdapter", "===================== goDetail();");
         mListener.goDetailInteration(position);
     }
 
@@ -120,6 +123,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             mView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
+                    Log.d("ListAdapter", "==================== LongClick();");
                     goDetail(position);
                     return true; // 롱클릭 후 온클릭이 실행되지 않도록 한다.
                 }
@@ -142,6 +146,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                     }
                 }
             });
+
+
         }
     }
 }

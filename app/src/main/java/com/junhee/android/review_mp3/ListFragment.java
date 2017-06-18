@@ -76,7 +76,7 @@ public class ListFragment extends Fragment {
         return view;
     }
 
-
+    // context를 interface로 캐스팅해줌
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
